@@ -3,6 +3,8 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   items: Array.from(new Array(500).keys()),
 
+  showOuter: true,
+
   actions: {
     toggle: function() {
       var start = performance.now();
