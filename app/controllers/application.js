@@ -5,6 +5,18 @@ export default Ember.Controller.extend({
 
   showOuter: true,
 
+  didInsertElement() {
+    Ember.run.schedule('afterRender', this, function() {
+      performance.mark('renderEnd');
+      requestAnimationFrame(function () {
+        // after paint
+        requestAnimationFrame(function () {
+          document.location.href = "about:blank";
+        });
+      });
+    });
+  }
+
   actions: {
     toggle: function() {
       var start = performance.now();
