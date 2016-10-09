@@ -1,15 +1,3 @@
-<button {{action "outerToggle"}}>toggle</button>
-
-<div>
-  Delay: {{outerDelay}}
-</div>
-
-{{#if showOuter}}
-
-<button {{action "toggle"}}>toggle</button>
-{{switch}} Delay: {{delay}}
-{{#each items as |item|}}
-  {{my-component value=item options=options}}
-{{/each}}
-
-{{/if}}
+{{#test-harness}}
+  {{long-list}}
+{{/test-harness}}
