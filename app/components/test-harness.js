@@ -3,17 +3,19 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   didInsertElement() {
     Ember.run.schedule('afterRender', this, function() {
-      performance.mark('secondRenderStart');
-      this.set('secondRender', true);
-      Ember.run.schedule('afterRender', this, function() {
-        performance.mark('renderEnd');
-        requestAnimationFrame(function () {
-          // after paint
+      Ember.run.later(() => {
+        performance.mark('secondRenderStart');
+        this.set('secondRender', true);
+        Ember.run.schedule('afterRender', this, function() {
+          performance.mark('renderEnd');
           requestAnimationFrame(function () {
-            document.location.href = "about:blank";
+            // after paint
+            requestAnimationFrame(function () {
+              document.location.href = "about:blank";
+            });
           });
         });
-      });
+      }, 2000);
     });
   }
 });
