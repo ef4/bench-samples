@@ -1,3 +1,7 @@
+{{#if secondRender}}
+  second
+{{/if}}
+
 {{#each items as |item|}}
   {{my-component value=item options=options}}
 {{/each}}
